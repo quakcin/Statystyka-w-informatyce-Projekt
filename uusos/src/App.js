@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { Route, Router, Routes } from 'react-router-dom';
+import Main from './Main';
+import { useEffect } from 'react';
+
+import Dexie from 'dexie';
+
+export const db = new Dexie("Usos");
+
+function App() 
+{
+
+  useEffect(() => {
+    db.version(1).stores({
+      oceny: "++id,student,przedmiot,ocena"
+    });
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" Component={() => <Main />} />
+    </Routes>
   );
 }
 
