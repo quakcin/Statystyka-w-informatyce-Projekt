@@ -15,6 +15,12 @@ export default function Korelacja ()
 {
     const [korelacja, setKorelacja] = useState([]);
 
+    async function fetchOcenyByPrzedmiot (name)
+    {
+        const allOceny = await db.oceny.where("przedmiot").equals(name).toArray();
+        return allOceny.map(n => n.ocena);
+    }
+
     async function fetchData ()
     {
         const allPrzedmioty = await db.oceny.orderBy('przedmiot').uniqueKeys();
@@ -24,13 +30,35 @@ export default function Korelacja ()
         for (const przedmiot of allPrzedmioty) {
             const korelacje = [];
 
+            const xOceny = await fetchOcenyByPrzedmiot(przedmiot);
+            const xAvg = xOceny.reduce((a, b) => a + b) / xOceny.length;
+
             for (const koreluj of allPrzedmioty) {
                 if (koreluj == przedmiot) {
                     korelacje.push('-');
                     continue;
                 }
 
-                korelacje.push(0);
+                const yOceny = await fetchOcenyByPrzedmiot(koreluj);
+                const yAvg = yOceny.reduce((a, b) => a + b) / yOceny.length;
+
+                let sumGora = 0;
+                for (let i = 0; i < xOceny.length; i++) {
+                    sumGora += (xOceny[i] - xAvg) * (yOceny[i] - yAvg);
+                }
+
+                let sumX = 0;
+                let sumY = 0;
+
+                for (let i = 0; i < xOceny.length; i++) {
+                    sumX += Math.pow(xOceny[i] - xAvg, 2);
+                    sumY += Math.pow(yOceny[i] - yAvg, 2);
+                }
+
+                const r = sumGora / (Math.sqrt(sumX) * Math.sqrt(sumY));
+
+
+                korelacje.push(r.toFixed(2));
             }
 
             data.push({

@@ -35,17 +35,69 @@ function getRandomName ()
     return name;
 }
 
+const getRandomOcena = function ()
+{
+    const oceny = [];
+    for (let i = 2.0; i <= 5.0; i += 0.5) {
+        if (i == 2.5) {
+            continue;
+        }
+
+        oceny.push(i);
+    }
+    return randomArrayElement(oceny);
+}
+
 async function generateMarks ()
 {
     db.oceny.clear()
+
     for (let i = 0; i < 30; i++) {
         const student = getRandomName();
+        let matma = 2.0;
+
         for (const przedmiot of _przedmioty) {
-            // oceny: "++id,student,przedmiot,ocena"
+            let losowaOcena = getRandomOcena();
+
+
+            if (przedmiot == "Informatyka" && losowaOcena >= 4.0 && Math.random() < 0.8) { // MB
+                losowaOcena -= 2.0;
+            }
+
+            if (przedmiot == "Język obcy" && Math.random() < 0.3) {
+                losowaOcena = Math.random() < 0.5 ? 5.0 : 4.5;
+            }
+
+            if (przedmiot == "Język obcy" && losowaOcena <= 3.0 && Math.random() < 0.5) {
+                losowaOcena = 4.0;
+            }
+
+            if (przedmiot == "Fizyka") {
+                if (Math.random() < 0.5) {
+                    losowaOcena = matma;
+                } else {
+                    if (matma > 3.0 && matma < 5.0) {
+                        losowaOcena = matma + (Math.random() < 0.5 ? -0.5 : 0.5);
+                    }
+                }
+            }
+
+            if (losowaOcena == 2.5) {
+                if (Math.random() < 0.5) {
+                    losowaOcena -= 0.5;
+                } else {
+                    losowaOcena += 0.5;
+                }
+            }
+
+            if (przedmiot == "Matematyka") {
+                matma = losowaOcena;
+            }
+
             const ocena = {
                 student: `${student}`,
                 przedmiot: przedmiot,
-                ocena: Math.round(2.0 + Math.random() * (5.0 - 2.5)) + (Math.random() < 0.5 ? 0.5 : 0.0)
+                ocena: losowaOcena
             }
 
             await db.oceny.add(ocena);

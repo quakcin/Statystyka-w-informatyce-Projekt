@@ -139,6 +139,7 @@ export default function MiaryTendencji ()
                         data: measures.map(n => n.measures[0])
                     }]}
                     xAxis={[{ scaleType: 'band', data: measures.map(n => n.przedmiot) }]}
+                    yAxis={[{ min: 2.0, label: "Średnia ocen" }]}
                     height={400}
                     margin={{ top: 50, bottom: 30, left: 40, right: 10 }}
                 />

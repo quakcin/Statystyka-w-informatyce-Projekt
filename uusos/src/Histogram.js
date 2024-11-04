@@ -19,7 +19,7 @@ export default function Histogram ()
 {
     const [chartSeries, setChartSeries] = useState(null);
     const [histogram, setHistogram] = useState([]);
-    const ocenyHist = (new Array(7)).fill(0).map((n, i) => 2.0 + i * 0.5);
+    const ocenyHist = [2.0, 3.0, 3.5, 4.0, 4.5, 5.0];
 
     async function fetchOcenyByPrzedmiot (name)
     {
@@ -31,6 +31,9 @@ export default function Histogram ()
     {
         const hist = {};
         for (let i = 2.0; i <= 5.0; i+= 0.5) {
+            if (i == 2.5) {
+                continue;
+            }
             hist[`o${i}`] = 0;
         }
 
@@ -67,9 +70,9 @@ export default function Histogram ()
         setHistogram(data);
 
         const series = [];
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < ocenyHist.length; i++) {
             series[i] = {
-                label: `${2.0 + i * 0.5}`,
+                label: `${ocenyHist[i]}`,
                 data: [],
             };
         }
@@ -127,6 +130,7 @@ export default function Histogram ()
                     height={400}
                     xAxis={[{ data: histogram.reverse().filter(n => n.przedmiot != "Wszystkie").map(n => n.przedmiot), scaleType: 'band' }]}
                     margin={{ top: 50, bottom: 30, left: 40, right: 10 }}
+                    yAxis={[{ label: "Ilość ocen"}]}
                 />
             )}
             
@@ -142,7 +146,7 @@ export default function Histogram ()
                             return {
                                 id: i,
                                 value: n,
-                                label: `Ocena ${2.0 + i * 0.5}`
+                                label: `Ocena ${2.0 + i * 0.5 + (i >= 1 ? 0.5 : 0)}`
                             }
                         })
                     }]}
