@@ -4,6 +4,7 @@ import Dexie from "dexie";
 import { db } from "./App";
 import Generator from "./Generator";
 import Summary from "./Summary";
+import CustomTabs from "./CustomTabs";
 
 
 
@@ -26,6 +27,7 @@ export default function Main ()
             <center>
                 <Generator />
                 <Summary />
+                <CustomTabs />
             </center>
         </>
     )
