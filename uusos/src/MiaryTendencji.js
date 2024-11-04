@@ -98,7 +98,7 @@ export default function MiaryTendencji ()
             przedmiot: "Wszystkie",
             measures: prepMeasures(allOcenyBuff.flat())
         })
-
+                    
         setMeasures(data);
     }
 
@@ -134,13 +134,11 @@ export default function MiaryTendencji ()
             </TableContainer> 
             {measures.length != 0 && (
                 <BarChart
-                    series={measures.map(n => {
-                        return {
-                            label: n.przedmiot,
-                            data: [n.measures[0]]
-                        }
-                    })}
-                    xAxis={[{ scaleType: 'band', data: ['Przedmioty'] }]}
+                    series={[{
+                        label: "Średnia z prezedmiotu",
+                        data: measures.map(n => n.measures[0])
+                    }]}
+                    xAxis={[{ scaleType: 'band', data: measures.map(n => n.przedmiot) }]}
                     height={400}
                     margin={{ top: 50, bottom: 30, left: 40, right: 10 }}
                 />

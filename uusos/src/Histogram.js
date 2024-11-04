@@ -77,8 +77,10 @@ export default function Histogram ()
 
         for (let przedmiot of data) {
             
-            if(przedmiot.przedmiot === 'Wszystkie')
+            if (przedmiot.przedmiot === 'Wszystkie') {
                 continue;
+            }
+
             let i = 0;
             for (let ocena of przedmiot.hist) {
                 series[i].data.push(ocena);
@@ -144,9 +146,6 @@ export default function Histogram ()
                             }
                         })
                     }]}
-                    sx={{
-                        
-                      }}
                 />
             )}
         </>
