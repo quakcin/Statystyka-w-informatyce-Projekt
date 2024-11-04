@@ -45,7 +45,7 @@ export default function CustomTabs() {
   };
 
   return (
-    <Box sx={{ width: '900px' }}>
+    <Box sx={{ width: '1000px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Histogram ocen" {...a11yProps(0)} />

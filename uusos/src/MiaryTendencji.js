@@ -140,8 +140,9 @@ export default function MiaryTendencji ()
                             data: [n.measures[0]]
                         }
                     })}
-                    height={280}
-                    margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+                    xAxis={[{ scaleType: 'band', data: ['Przedmioty'] }]}
+                    height={400}
+                    margin={{ top: 50, bottom: 30, left: 40, right: 10 }}
                 />
             )}
         </>

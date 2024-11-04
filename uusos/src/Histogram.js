@@ -76,20 +76,22 @@ export default function Histogram ()
         console.log(series);
 
         for (let przedmiot of data) {
+            
+            if(przedmiot.przedmiot === 'Wszystkie')
+                continue;
             let i = 0;
             for (let ocena of przedmiot.hist) {
                 series[i].data.push(ocena);
                 i++;
             }
         }
-        
-        setChartSeries(series.filter(n => n.label != "Wszystkie"));
+        setChartSeries(series);
     }
 
     return (
         <>
             <Button onClick={(e) => fetchHisrograms() }>Załaduj</Button>
-            <TableContainer component={Paper} sx={{ width: 800}}>
+            <TableContainer component={Paper} sx={{ width: 1000}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -120,18 +122,20 @@ export default function Histogram ()
             {chartSeries != null && (
                 <BarChart
                     series={chartSeries}
-                    
-                    height={250}
+                    height={400}
                     xAxis={[{ data: histogram.reverse().filter(n => n.przedmiot != "Wszystkie").map(n => n.przedmiot), scaleType: 'band' }]}
-                    margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+                    margin={{ top: 50, bottom: 30, left: 40, right: 10 }}
                 />
             )}
             
             {histogram.length != 0 && (
                 <PieChart 
                     width={600}
-                    height={220}
+                    height={300}
                     series={[{
+                        arcLabel: (item) => `${item.value}%`,
+                        arcLabelMinAngle: 35,
+                        arcLabelRadius: '60%',
                         data: histogram.filter(n => n.przedmiot == "Wszystkie").at(0).hist.map((n, i) => {
                             return {
                                 id: i,
@@ -140,6 +144,9 @@ export default function Histogram ()
                             }
                         })
                     }]}
+                    sx={{
+                        
+                      }}
                 />
             )}
         </>
