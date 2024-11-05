@@ -8,6 +8,7 @@ import Histogram from './Histogram';
 import { BarChart } from '@mui/x-charts/BarChart';
 import MiaryTendencji from './MiaryTendencji';
 import Korelacja from './Korelacja';
+import Porownywarka from './Porownywarka';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,6 +53,7 @@ export default function CustomTabs() {
           <Tab label="Histogram ocen" {...a11yProps(0)} />
           <Tab label="Miary tendencji" {...a11yProps(1)} />
           <Tab label="Korelacja Pearsona" {...a11yProps(2)} />
+          <Tab label="Analiza porówanwcza" {...a11yProps(4)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -62,6 +64,9 @@ export default function CustomTabs() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <Korelacja />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+        <Porownywarka />
       </CustomTabPanel>
     </Box>
   );

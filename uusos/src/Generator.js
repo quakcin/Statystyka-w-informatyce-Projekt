@@ -18,21 +18,24 @@ const namebuffer = [];
 
 function getRandomNameExact ()
 {
-    if (Math.random() < 0.5) {
-        return `${randomArrayElement(_nazwiska_meskie)} ${randomArrayElement(_imiona_meskie)}`;
+    const isMen = Math.random() < 0.5;
+    if (isMen) {
+        return [true, `${randomArrayElement(_nazwiska_meskie)} ${randomArrayElement(_imiona_meskie)}`];
     }
 
-    return `${randomArrayElement(_nazwiska_damskie)} ${randomArrayElement(_imiona_damskie)}`;
+    return [false, `${randomArrayElement(_nazwiska_damskie)} ${randomArrayElement(_imiona_damskie)}`];
 }
 
 function getRandomName ()
 {
     let name;
+    let isMan;
+
     do {
-        name = getRandomNameExact();
+        [isMan, name] = getRandomNameExact();
     } while (namebuffer.includes(name));
     namebuffer.push(name);
-    return name;
+    return [isMan, name];
 }
 
 const getRandomOcena = function ()
@@ -53,7 +56,7 @@ async function generateMarks ()
     db.oceny.clear()
 
     for (let i = 0; i < 30; i++) {
-        const student = getRandomName();
+        const [isMan, student] = getRandomName();
         let matma = 2.0;
 
         for (const przedmiot of _przedmioty) {
@@ -94,10 +97,15 @@ async function generateMarks ()
                 matma = losowaOcena;
             }
 
+            if (przedmiot == "WF" && losowaOcena == 2.0) {
+                losowaOcena = 3.0;
+            }
+
             const ocena = {
                 student: `${student}`,
                 przedmiot: przedmiot,
-                ocena: losowaOcena
+                ocena: losowaOcena,
+                plec: isMan
             }
 
             await db.oceny.add(ocena);

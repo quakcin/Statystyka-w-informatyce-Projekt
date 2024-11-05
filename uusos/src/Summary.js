@@ -54,6 +54,7 @@ export default function Summary() {
                         {przedmioty.map((przedmiot, key) => (
                             <TableCell align="right" key={key}>{przedmiot}</TableCell>
                         ))}
+                        <TableCell>Średnia</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -67,6 +68,7 @@ export default function Summary() {
                             {element.oceny.map((ocena, key2) => (
                                 <TableCell align="right" key={key2}>{ocena}</TableCell>
                             ))}
+                            <TableCell align="right">{(element.oceny.reduce((a, b) => a + b) / element.oceny.length).toFixed(2)}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

@@ -5,4 +5,4 @@ export const _nazwiska_damskie = [ 'Kowalska', 'Nowak', 'Wiśniewska', 'Wójcik'
 export const _imiona_meskie = [ 'Jan', 'Piotr', 'Maciej', 'Adam', 'Michał', 'Tomasz', 'Krzysztof', 'Mateusz', 'Jakub', 'Wojciech', 'Paweł', 'Kacper', 'Filip', 'Bartosz', 'Szymon', 'Łukasz', 'Damian', 'Grzegorz', 'Marcin', 'Artur' ];
 export const _nazwiska_meskie = [ 'Adamczak', 'Błaszczyk', 'Czarnecki', 'Duda', 'Gajda', 'Grabowski', 'Kocur', 'Kozłowski', 'Lis', 'Makowski', 'Michalski', 'Nowicki', 'Ostrowski', 'Pająk', 'Skowroński', 'Sobolewski', 'Tomaszewski', 'Wysocki', 'Zawisza', 'Żak' ];
 
-export const _przedmioty = ['Matematyka', 'Informatyka', 'Fizyka', 'Język obcy', 'Historia'];
+export const _przedmioty = ['Matematyka', 'Informatyka', 'Fizyka', 'Język obcy', 'Historia', 'WF'];
