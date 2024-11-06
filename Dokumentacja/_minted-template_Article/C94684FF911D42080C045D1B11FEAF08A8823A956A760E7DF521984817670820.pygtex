@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{ocenyToHistogram}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kd}{function}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{oceny}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{hist}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{};}
+\PYG{+w}{	}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.0}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mf}{5.0}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{o}{+=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mf}{2.5}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k}{continue}\PYG{p}{;}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{n+nx}{hist}\PYG{p}{[}\PYG{l+s+sb}{`o}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{i}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{`}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{;}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}
+\PYG{+w}{	}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{ocena}\PYG{+w}{ }\PYG{k}{of}\PYG{+w}{ }\PYG{n+nx}{oceny}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{n+nx}{hist}\PYG{p}{[}\PYG{l+s+sb}{`o}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{ocena}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{`}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{p}{;}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}
+\PYG{+w}{	}\PYG{k}{return}\PYG{+w}{ }\PYG{n+nb}{Object}\PYG{p}{.}\PYG{n+nx}{values}\PYG{p}{(}\PYG{n+nx}{hist}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}
+\end{Verbatim}

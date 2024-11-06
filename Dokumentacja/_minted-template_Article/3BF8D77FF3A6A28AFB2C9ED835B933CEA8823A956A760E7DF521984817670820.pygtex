@@ -1,0 +1,64 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{async}\PYG{+w}{ }\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{generateMarks}\PYG{+w}{ }\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{oceny}\PYG{p}{.}\PYG{n+nx}{clear}\PYG{p}{()}
+\PYG{+w}{	}
+\PYG{+w}{	}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{30}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nx}{isMan}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{student}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{getRandomName}\PYG{p}{();}
+\PYG{+w}{		}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{matma}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.0}\PYG{p}{;}
+\PYG{+w}{		}
+\PYG{+w}{		}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{k}{of}\PYG{+w}{ }\PYG{n+nx}{\PYGZus{}przedmioty}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{getRandomOcena}\PYG{p}{();}
+\PYG{+w}{			}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Informatyka\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{l+m+mf}{4.0}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{random}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.8}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{\PYGZhy{}=}\PYG{+w}{ }\PYG{l+m+mf}{2.0}\PYG{p}{;}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Język obcy\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{random}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.3}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{random}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+m+mf}{5.0}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{4.5}\PYG{p}{;}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Język obcy\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mf}{3.0}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{random}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{4.0}\PYG{p}{;}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Fizyka\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{random}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{					}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{matma}\PYG{p}{;}
+\PYG{+w}{				}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{					}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{matma}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{3.0}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{matma}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{5.0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{						}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{matma}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{random}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.5}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{);}
+\PYG{+w}{					}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{				}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mf}{2.5}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{random}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{					}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{\PYGZhy{}=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{;}
+\PYG{+w}{				}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{					}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{;}
+\PYG{+w}{				}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Matematyka\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{matma}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{losowaOcena}\PYG{p}{;}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}WF\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mf}{2.0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{losowaOcena}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{3.0}\PYG{p}{;}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{ocena}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{student}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+sb}{`}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{student}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{`}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{przedmiot}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{przedmiot}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{ocena}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{losowaOcena}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{plec}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{isMan}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{oceny}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{ocena}\PYG{p}{);}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}
+\end{Verbatim}

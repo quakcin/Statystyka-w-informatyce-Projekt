@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{PieChart}
+\PYG{+w}{	}\PYG{n+na}{width}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+m+mf}{700}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{n+na}{height}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+m+mf}{400}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{n+na}{series}\PYG{o}{=}\PYG{p}{\PYGZob{}[\PYGZob{}}
+\PYG{+w}{		}\PYG{n+nx}{arcLabel}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{item}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+s+sb}{`}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{item}\PYG{p}{.}\PYG{n+nx}{value}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{\PYGZpc{}`}\PYG{p}{,}
+\PYG{+w}{		}\PYG{n+nx}{arcLabelMinAngle}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{35}\PYG{p}{,}
+\PYG{+w}{		}\PYG{n+nx}{arcLabelRadius}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}60\PYGZpc{}\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{		}\PYG{n+nx}{data}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{histogram}\PYG{p}{.}\PYG{n+nx}{filter}\PYG{p}{(}\PYG{n+nx}{n}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{n}\PYG{p}{.}\PYG{n+nx}{przedmiot}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Wszystkie\PYGZdq{}}\PYG{p}{).}\PYG{n+nx}{at}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{).}\PYG{n+nx}{hist}\PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{((}\PYG{n+nx}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k}{return}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{id}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{value}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{n}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{label}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+sb}{`Ocena }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{l+m+mf}{2.0}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{`}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{})}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}]\PYGZcb{}}
+\PYG{p}{/\PYGZgt{}}
+\PYG{+w}{		}
+\end{Verbatim}

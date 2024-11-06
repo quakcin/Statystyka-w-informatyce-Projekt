@@ -1,0 +1,52 @@
+\section{Wstęp}
+\paragraph{Wykonywany temat:} Analiza wyników egzaminów studentów z różnych przedmiotów.
+
+\paragraph{} W ramach przeprowadzono analizę danych dotyczących ocen uzyskanych przez studentów z wybranych przedmiotów. Celem projektu było opracowanie narzędzia umożliwiającego szczegółową analizę wyników egzaminów oraz ich wizualizację, co pozwoli na lepsze zrozumienie rozkładów ocen oraz zależności między poszczególnymi przedmiotami. W projekcie skupiono się na identyfikacji rodzaju przetwarzanych danych oraz doborze odpowiedniej formy przechowywania, aby zapewnić efektywny dostęp do danych. Następnie, zaprojektowano aplikację, która umożliwia obliczanie podstawowych miar statystycznych, takich jak miary tendencji centralnej i zróżnicowania, oraz wyznaczanie współczynników korelacji pomiędzy parami atrybutów. Dodatkowo, dane zostały przedstawione graficznie przy użyciu różnorodnych wykresów, co ułatwia interpretację wyników i wspiera wyciąganie wniosków.
+
+\paragraph{Wykorzystane technologie:} Projekt został oparty na bibliotece React, co umożliwiło stworzenie dynamicznej i interaktywnej aplikacji webowej. W celu przechowywania danych, poszukiwaliśmy rozwiązania typu lite SQL, które pozwoliłoby na obsługę danych lokalnie, bez potrzeby implementowania części backendowej. Wybór padł na Dexie.js, lekką bazę danych SQL-like, dedykowaną dla aplikacji React. Dzięki temu rozwiązaniu możliwe było przechowywanie i szybkie przetwarzanie danych na urządzeniu użytkownika.
+
+\paragraph{Rodzaj przetwarzanych danych:} Dane użyte w projekcie nie pochodzą z żadnego zewnętrznego źródła, lecz zostały wygenerowane za pomocą naszego autorskiego generatora ocen. W systemie znajduje się 30 studentów, z których każdy posiada 6 ocen z 6 przedmiotów: 
+\begin{itemize}
+	\item matematyki,
+	\item informatyki,
+	\item fizyki,
+	\item języka obcego,
+	\item historii,
+	\item wychowania fizycznego,
+\end{itemize}
+\vspace{20pt}
+ Generator ocen został zaprojektowany w taki sposób, aby umożliwić uzyskanie realistycznych danych, które mogą posłużyć do przeprowadzenia analizy statystycznej i wizualizacji wyników.
+ 
+ 
+\newpage
+\paragraph{Skala ocen:} W projekcie zastosowano skalę ocen stosowaną na studiach wyższych, która obejmuje następujące stopnie:
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Ocena} & \textbf{Opis} \\
+		\hline
+		5.0 & Bardzo dobry \\
+		4.5 & Dobry plus \\
+		4.0 & Dobry \\
+		3.5 & Dostateczny plus \\
+		3.0 & Dostateczny \\
+		2.0 & Niedostateczny \\
+		\hline
+	\end{tabular}
+	\caption{Skala ocen stosowana w projekcie}
+\end{table}
+
+W ramach projektu wyznaczane są następujące wskaźniki statystyczne:
+\begin{itemize}
+	\item \textbf{Średnia} – miara tendencji centralnej, wskazująca przeciętną wartość ocen.
+	\item \textbf{Mediana} – środkowa wartość zestawu danych, dzieląca je na dwie równe części.
+	\item \textbf{Dominanta} – najczęściej występująca wartość w zbiorze ocen.
+	\item \textbf{Wariancja} – miara rozproszenia danych, wskazująca, jak bardzo oceny odbiegają od średniej.
+	\item \textbf{Odchylenie standardowe} – pierwiastek z wariancji, będący bardziej intuicyjną miarą rozrzutu danych.
+	\item \textbf{Korelacja Pearsona} – miara zależności liniowej pomiędzy parami ocen z różnych przedmiotów.
+\end{itemize}
+
+
+Te wskaźniki pozwalają na szczegółową analizę wyników studentów i umożliwiają wyciąganie wniosków na temat rozkładu ocen oraz zależności między przedmiotami.

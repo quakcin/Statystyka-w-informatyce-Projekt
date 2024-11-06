@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{k}{async}\PYG{+w}{ }\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{fetchOceny}\PYG{p}{()}
+\PYG{+w}{		}\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{oceny}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// preload}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{allPrzedmioty}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{oceny}\PYG{p}{.}\PYG{n+nx}{orderBy}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}przedmiot\PYGZsq{}}\PYG{p}{).}\PYG{n+nx}{uniqueKeys}\PYG{p}{();}\PYG{c+c1}{//.sort();}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{sortedPrzedmioty}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{allPrzedmioty}\PYG{p}{.}\PYG{n+nx}{sort}\PYG{p}{();}
+\PYG{+w}{			}\PYG{n+nx}{setPrzedmioty}\PYG{p}{(}\PYG{n+nx}{sortedPrzedmioty}\PYG{p}{);}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{dane}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[];}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{studenci}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{oceny}\PYG{p}{.}\PYG{n+nx}{orderBy}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}student\PYGZsq{}}\PYG{p}{).}\PYG{n+nx}{uniqueKeys}\PYG{p}{();}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{sortedStudenci}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{studenci}\PYG{p}{.}\PYG{n+nx}{sort}\PYG{p}{();}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{c+cm}{/** Pobieramy oceny studenta */}
+\PYG{+w}{			}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{student}\PYG{+w}{ }\PYG{k}{of}\PYG{+w}{ }\PYG{n+nx}{sortedStudenci}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{ocenyForStudent}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{oceny}
+\PYG{+w}{				}\PYG{p}{.}\PYG{n+nx}{where}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}student\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{				}\PYG{p}{.}\PYG{n+nx}{equals}\PYG{p}{(}\PYG{n+nx}{student}\PYG{p}{)}
+\PYG{+w}{				}\PYG{p}{.}\PYG{n+nx}{sortBy}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}przedmiot\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{				}
+\PYG{+w}{				}\PYG{n+nx}{dane}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(\PYGZob{}}
+\PYG{+w}{					}\PYG{n+nx}{student}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{student}\PYG{p}{,}
+\PYG{+w}{					}\PYG{n+nx}{oceny}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{ocenyForStudent}\PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{(}\PYG{n+nx}{n}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{n}\PYG{p}{.}\PYG{n+nx}{ocena}\PYG{p}{)}
+\PYG{+w}{				}\PYG{p}{\PYGZcb{});}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{			}
+\PYG{+w}{			}\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{dane}\PYG{p}{);}
+\PYG{+w}{			}\PYG{n+nx}{setOceny}\PYG{p}{(}\PYG{n+nx}{dane}\PYG{p}{);}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}
+\end{Verbatim}
