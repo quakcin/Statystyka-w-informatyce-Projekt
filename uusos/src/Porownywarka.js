@@ -1,4 +1,4 @@
-import { Menu, MenuItem, Select } from "@mui/material";
+import { Menu, MenuItem, Select, Typography } from "@mui/material";
 import { _przedmioty } from "./lut";
 import { useEffect, useState } from "react";
 import { db } from "./App";
@@ -49,7 +49,14 @@ export default function Porownywarka ()
 
     return (
         <>
-            <div style={{ display: 'flex', gap: 20, alignItems: 'center', justifyContent: 'center'}}>
+            <Typography sx={{ marginTop: 1, textAlign: 'left' }} variant="h4">
+                Analiza porównawcza
+            </Typography>
+            <Typography sx={{ marginTop: 1, textAlign: 'left'  }} variant="h6">
+                Zdawalności z podziałem na płeć
+            </Typography>
+
+            <div style={{ display: 'flex', gap: 20, alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
                 Porównaj 
                 <Select onChange={(e) => setPrzedmiot1(e.target.value)} value={przedmiot1}>
                     {_przedmioty.map((p, k) => <MenuItem value={p} key={k} selected={p == przedmiot1}>{p}</MenuItem>)}
@@ -61,7 +68,7 @@ export default function Porownywarka ()
             </div>
 
 
-            <TableContainer component={Paper} sx={{ width: 800}}>
+            <TableContainer component={Paper} sx={{ width: 800, marginTop: 5}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>

@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { db } from "./App";
 import { useState } from "react";
 
@@ -46,6 +46,7 @@ export default function Histogram ()
 
     async function fetchHisrograms () 
     {
+        await db.oceny; // preload
         const allPrzedmioty = await db.oceny.orderBy('przedmiot').uniqueKeys();
         const allOcenyBuff = [];
 
@@ -93,10 +94,20 @@ export default function Histogram ()
         setChartSeries(series);
     }
 
+    React.useEffect(() => {
+        fetchHisrograms();
+    }, []);
+
     return (
-        <>
-            <Button onClick={(e) => fetchHisrograms() }>Załaduj</Button>
-            <TableContainer component={Paper} sx={{ width: 1000}}>
+        <> 
+            <Typography sx={{ marginTop: 1, textAlign: 'left' }} variant="h4">
+                Podliczenie ocen
+            </Typography>
+            <Typography sx={{ marginTop: 1, textAlign: 'left'  }} variant="h6">
+                Ilość danej oceny z każdego przedmiotu
+            </Typography>
+
+            <TableContainer component={Paper} sx={{ width: 800, marginTop: 6 }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -124,6 +135,13 @@ export default function Histogram ()
                 </Table>
             </TableContainer>
 
+            <Typography sx={{ marginTop: 8, textAlign: 'left'  }} variant="h4">
+                Histogram ocen
+            </Typography>
+            <Typography sx={{ marginTop: 1, textAlign: 'left'  }} variant="h6">
+                Ze wszystkich przedmiotów
+            </Typography>
+
             {chartSeries != null && (
                 <BarChart
                     series={chartSeries}
@@ -134,10 +152,18 @@ export default function Histogram ()
                 />
             )}
             
+            <Typography sx={{ marginTop: 8, textAlign: 'left' }} variant="h4">
+                Procentowy rozkład
+            </Typography>
+            <Typography sx={{ marginTop: 1, textAlign: 'left'  }} variant="h6">
+                Oceny wszystkich studentów
+            </Typography>
+
             {histogram.length != 0 && (
                 <PieChart 
-                    width={600}
-                    height={300}
+                    width={700}
+                    height={400}
+                    margin={{ top: 50 }}
                     series={[{
                         arcLabel: (item) => `${item.value}%`,
                         arcLabelMinAngle: 35,

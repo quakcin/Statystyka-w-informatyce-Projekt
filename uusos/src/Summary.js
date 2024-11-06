@@ -11,11 +11,18 @@ import { db } from "./App";
 import { Button } from "@mui/material";
 
 
-export default function Summary() {
+export default function Summary() 
+{
     const [oceny, setOceny] = useState([]);
     const [przedmioty, setPrzedmioty] = useState([])
 
-    async function fetchOceny() {
+    React.useEffect(() => {
+        fetchOceny();
+    }, []);
+
+    async function fetchOceny() 
+    {
+        await db.oceny; // preload
         const allPrzedmioty = await db.oceny.orderBy('przedmiot').uniqueKeys();//.sort();
 
         const sortedPrzedmioty = allPrzedmioty.sort();
@@ -43,9 +50,7 @@ export default function Summary() {
     }
 
     return (
-        <>
-        <Button onClick={(e) => fetchOceny() }>Baryłka</Button>
-        <TableContainer component={Paper} sx={{ width: 800}}>
+        <TableContainer component={Paper} sx={{ width: 900 }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -74,6 +79,5 @@ export default function Summary() {
                 </TableBody>
             </Table>
         </TableContainer>
-        </>
     )
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { db } from "./App";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -23,6 +23,8 @@ export default function Korelacja ()
 
     async function fetchData ()
     {
+        await db.oceny; // preload
+
         const allPrzedmioty = await db.oceny.orderBy('przedmiot').uniqueKeys();
 
         const data = [];
@@ -71,10 +73,19 @@ export default function Korelacja ()
         setKorelacja(data);
     }
 
+    React.useEffect(() => {
+        fetchData();
+    }, []);
+
     return (
         <>
-            <Button onClick={(e) => fetchData() }>Załaduj</Button>
-            <TableContainer component={Paper} sx={{ width: 800}}>
+            <Typography sx={{ marginTop: 1, textAlign: 'left' }} variant="h4">
+                Współczynniki korelacji Pearsona
+            </Typography>
+            <Typography sx={{ marginTop: 1, textAlign: 'left'  }} variant="h6">
+                Dla par przedmitów
+            </Typography>
+            <TableContainer component={Paper} sx={{ width: 800, marginTop: 6 }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { db } from "./App";
 
 import * as React from 'react';
@@ -79,6 +79,8 @@ export default function MiaryTendencji ()
 
     async function fetchMeasures ()
     {
+        await db.oceny; // preload
+
         const allPrzedmioty = await db.oceny.orderBy('przedmiot').uniqueKeys();
         const allOcenyBuff = [];
 
@@ -102,10 +104,19 @@ export default function MiaryTendencji ()
         setMeasures(data);
     }
 
+    React.useEffect(() => {
+        fetchMeasures();
+    }, []);
+
     return (
         <>
-            <Button onClick={(e) => fetchMeasures() }>Załaduj</Button>
-            <TableContainer component={Paper} sx={{ width: 800}}>
+            <Typography sx={{ marginTop: 1, textAlign: 'left' }} variant="h4">
+                Podstawowe miary rozkładu
+            </Typography>
+            <Typography sx={{ marginTop: 1, textAlign: 'left'  }} variant="h6">
+                Z podziałem na przedmioty
+            </Typography>
+            <TableContainer component={Paper} sx={{ width: 800, marginTop: 6 }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -132,10 +143,16 @@ export default function MiaryTendencji ()
                     </TableBody>
                 </Table>
             </TableContainer> 
+            <Typography sx={{ marginTop: 8, textAlign: 'left' }} variant="h4">
+                Średnia ocen studentów
+            </Typography>
+            <Typography sx={{ marginTop: 1, textAlign: 'left'  }} variant="h6">
+                Z poszczególnych przedmiotów
+            </Typography>
             {measures.length != 0 && (
                 <BarChart
                     series={[{
-                        label: "Średnia z prezedmiotu",
+                        label: "Średnia z przedmiotu",
                         data: measures.map(n => n.measures[0])
                     }]}
                     xAxis={[{ scaleType: 'band', data: measures.map(n => n.przedmiot) }]}

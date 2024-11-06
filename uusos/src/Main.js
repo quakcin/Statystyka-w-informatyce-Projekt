@@ -25,8 +25,6 @@ export default function Main ()
         <>
             <Header />
             <center>
-                <Generator />
-                <Summary />
                 <CustomTabs />
             </center>
         </>
